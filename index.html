@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEN-2767 Conditiemetingen | Bouwadvies Nederland</title>
-    <!-- Bootstrap 5 -->
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #0056b3;  /* Blauw */
-            --secondary: #333;    /* Donkergrijs */
-            --accent: #e74c3c;    /* Rood */
+            --primary: #0056b3;
+            --secondary: #333;
+            --accent: #e74c3c;
         }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+        
         .hero {
-            background: linear-gradient(rgba(0,86,179,0.9), rgba(0,86,179,0.8)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3');
+            background: linear-gradient(rgba(0,86,179,0.9), rgba(0,86,179,0.8)), 
+                        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3');
             background-size: cover;
             background-position: center;
             color: white;
@@ -23,39 +30,62 @@
             display: flex;
             align-items: center;
         }
+        
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
         .benefit-card {
             border-left: 4px solid var(--accent);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
             height: 100%;
         }
+        
         .benefit-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
+        
         .btn-primary {
             background-color: var(--accent);
             border: none;
             padding: 10px 25px;
+            transition: all 0.3s;
         }
+        
         .btn-primary:hover {
             background-color: #c0392b;
+            transform: translateY(-2px);
         }
+        
         .bg-primary {
             background-color: var(--primary) !important;
         }
+        
+        #contact {
+            background-color: #f8f9fa;
+        }
+        
         #contact .form-control {
             border-radius: 0;
             border: 1px solid #ddd;
             padding: 12px 15px;
+            margin-bottom: 20px;
         }
+        
         #contact .form-control:focus {
             box-shadow: 0 0 0 0.25rem rgba(0, 86, 179, 0.25);
             border-color: var(--primary);
         }
+        
+        footer {
+            background-color: #343a40;
+        }
+        
         .floating-label {
             position: relative;
-            margin-bottom: 20px;
         }
+        
         .floating-label label {
             position: absolute;
             top: 12px;
@@ -64,6 +94,7 @@
             pointer-events: none;
             color: #999;
         }
+        
         .floating-label input:focus + label,
         .floating-label input:not(:placeholder-shown) + label,
         .floating-label textarea:focus + label,
@@ -87,9 +118,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">NEN-2767</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Diensten</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Over ons</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#diensten">Diensten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#over-ons">Over ons</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -102,7 +133,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <h1 class="display-4 fw-bold">NEN-2767 Conditiemetingen</h1>
-                    <p class="lead">Objectieve vastgoedinspecties voor toekomstbestendig onderhoud</p>
+                    <p class="lead">Professionele vastgoedinspecties voor een toekomstbestendig onderhoudsplan</p>
                     <a href="#contact" class="btn btn-primary btn-lg px-4">Vraag een gesprek aan</a>
                 </div>
             </div>
@@ -110,7 +141,7 @@
     </section>
 
     <!-- Waarom NEN-2767 -->
-    <section class="py-5 bg-light">
+    <section class="py-5 bg-light" id="over-ons">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -136,30 +167,30 @@
     </section>
 
     <!-- Onze Aanpak -->
-    <section class="py-5">
+    <section class="py-5" id="diensten">
         <div class="container">
             <h2 class="text-center mb-5">Onze dienstverlening</h2>
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm benefit-card">
                         <div class="card-body">
-                            <h3 class="h5">Volledige NEN-2767 inspecties</h3>
-                            <p>Uitgevoerd door ervaren inspecteurs met ruime kennis van de norm.</p>
+                            <h3 class="h5"><i class="fas fa-clipboard-check text-primary me-2"></i> Volledige inspecties</h3>
+                            <p>Uitgevoerd door ervaren inspecteurs met ruime kennis van de NEN-2767 norm.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm benefit-card">
                         <div class="card-body">
-                            <h3 class="h5">Elementenlijsten opstellen</h3>
-                            <p>Op basis van tekeningen of via een opname ter plaatse.</p>
+                            <h3 class="h5"><i class="fas fa-list-alt text-primary me-2"></i> Elementenlijsten</h3>
+                            <p>Op basis van tekeningen of via een uitgebreide opname ter plaatse.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card h-100 border-0 shadow-sm benefit-card">
                         <div class="card-body">
-                            <h3 class="h5">MJOP-ondersteuning</h3>
+                            <h3 class="h5"><i class="fas fa-calendar-alt text-primary me-2"></i> MJOP-ondersteuning</h3>
                             <p>Actualiseren of opstellen van meerjarenonderhoudsplannen.</p>
                         </div>
                     </div>
@@ -174,12 +205,13 @@
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center mb-5">
                     <h2 class="mb-3">Vraag een gesprek aan</h2>
-                    <p class="lead">Laat uw gegevens achter en wij nemen zo snel mogelijk contact met u op</p>
+                    <p class="lead">Laat uw gegevens achter en wij nemen binnen 24 uur contact met u op</p>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <form id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <form id="contact-form" action="https://formspree.io/f/xqaqoden" method="POST">
+                        <!-- Anti-spam honeypot -->
                         <input type="text" name="_gotcha" style="display:none;">
                         
                         <div class="floating-label mb-4">
@@ -218,7 +250,7 @@
     <section class="py-5 bg-primary text-white">
         <div class="container text-center">
             <h2 class="mb-4">Klaar voor toekomstbestendig vastgoedbeheer?</h2>
-            <p class="lead mb-4">Wij denken graag met u mee in haalbare oplossingen die passen binnen uw onderhouds- en investeringsstrategie.</p>
+            <p class="lead mb-4">Onze specialisten staan voor u klaar om uw vastgoed optimaal te beheren.</p>
             <a href="#contact" class="btn btn-light btn-lg px-4">Neem contact op</a>
         </div>
     </section>
@@ -227,23 +259,28 @@
     <footer class="py-4 bg-dark text-white">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <h3 class="h5">Bouwadvies Nederland B.V.</h3>
                     <p>Praktische oplossingen, betrouwbare adviezen en toekomstgericht denken.</p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <h3 class="h5">Contact</h3>
                     <ul class="list-unstyled">
                         <li><i class="fas fa-envelope me-2"></i> info@bouwadvies-nederland.nl</li>
-                        <li><i class="fas fa-phone me-2"></i> [Telefoonnummer]</li>
+                        <li><i class="fas fa-phone me-2"></i> (010) 123 45 67</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i> Rotterdam, Nederland</li>
                     </ul>
                 </div>
-                <div class="col-md-3">
-                    <h3 class="h5">Whitepaper</h3>
-                    <a href="#" class="btn btn-outline-light btn-sm">Download NEN-2767 gids</a>
+                <div class="col-md-4">
+                    <h3 class="h5">Documentatie</h3>
+                    <a href="#" class="btn btn-outline-light btn-sm mb-2">Download NEN-2767 gids</a>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-3"><i class="fab fa-linkedin fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-facebook fa-lg"></i></a>
+                    </div>
                 </div>
             </div>
-            <hr>
+            <hr class="my-4">
             <p class="mb-0 text-center">&copy; 2023 Bouwadvies Nederland. Alle rechten voorbehouden.</p>
         </div>
     </footer>
@@ -260,11 +297,11 @@
             const submitText = submitButton.querySelector('.submit-text');
             const spinner = submitButton.querySelector('.spinner-border');
             
-            // Toon laadindicator
+            // Laadstatus tonen
             submitText.textContent = 'Verzenden...';
             spinner.classList.remove('d-none');
             submitButton.disabled = true;
-            
+
             try {
                 const response = await fetch(form.action, {
                     method: 'POST',
@@ -274,8 +311,17 @@
                 
                 if (response.ok) {
                     // Succesmelding
-                    alert('Bedankt voor uw aanvraag! Wij nemen zo snel mogelijk contact met u op.');
+                    alert('Bedankt voor uw aanvraag! Wij nemen binnen 24 uur contact met u op.');
                     form.reset();
+                    
+                    // Alle labels resetten
+                    document.querySelectorAll('.floating-label label').forEach(label => {
+                        label.style.top = '12px';
+                        label.style.left = '15px';
+                        label.style.fontSize = '';
+                        label.style.background = '';
+                        label.style.color = '#999';
+                    });
                 } else {
                     throw new Error('Formulier verzending mislukt');
                 }
@@ -283,7 +329,7 @@
                 console.error('Fout:', error);
                 alert('Er is een fout opgetreden bij het verzenden. Probeer het later opnieuw of mail naar info@bouwadvies-nederland.nl');
             } finally {
-                // Herstel knop
+                // Knop resetten
                 submitText.textContent = 'Verstuur aanvraag';
                 spinner.classList.add('d-none');
                 submitButton.disabled = false;
