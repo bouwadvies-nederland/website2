@@ -15,12 +15,17 @@
             --accent: #e74c3c;
         }
 
-        /* Witte header */
+        /* Witte header met navigatie */
         .header-bar {
             background: white;
             padding: 15px 0;
             border-bottom: 1px solid #f0f0f0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .header-logo {
             height: 80px;
@@ -30,10 +35,22 @@
         .header-logo:hover {
             transform: scale(1.03);
         }
-
-        /* Navigatie */
-        .navbar-dark {
-            background-color: #343a40 !important;
+        .header-nav {
+            display: flex;
+            gap: 25px;
+        }
+        .header-nav a {
+            color: var(--secondary) !important;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .header-nav a:hover,
+        .header-nav a.active {
+            color: var(--primary) !important;
+            border-bottom-color: var(--primary);
         }
 
         /* Hero sectie */
@@ -46,75 +63,41 @@
             min-height: 60vh;
             display: flex;
             align-items: center;
+            margin-top: -1px;
         }
 
-        /* Diensten cards */
-        .benefit-card {
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s;
-        }
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Knoppen */
-        .btn-primary {
-            background-color: var(--accent);
-            border: none;
-            padding: 10px 25px;
-        }
-        .btn-primary:hover {
-            background-color: #c0392b;
-        }
-
-        /* Contactformulier */
-        #contact .form-control {
-            margin-bottom: 20px;
-        }
-
-        /* Responsive aanpassingen */
+        /* Responsive menu */
         @media (max-width: 992px) {
-            .header-bar {
-                display: none;
+            .header-container {
+                flex-direction: column;
+                text-align: center;
             }
-            .navbar-brand img {
-                height: 50px;
+            .header-nav {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Witte header (desktop) -->
-    <div class="header-bar d-none d-lg-block">
-        <div class="container">
-            <img src="assets/images/logo-bouwadvies-nederland.jpeg" 
-                 alt="Bouwadvies Nederland" 
-                 class="header-logo">
-        </div>
-    </div>
-
-    <!-- Navigatie -->
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
+    <!-- Witte header met navigatie -->
+    <header class="header-bar">
+        <div class="container header-container">
+            <a href="#">
                 <img src="assets/images/logo-bouwadvies-nederland.jpeg" 
-                     alt="Bouwadvies Nederland"
-                     height="40">
+                     alt="Bouwadvies Nederland" 
+                     class="header-logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#diensten">Diensten</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#over-ons">Over ons</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
+            <nav class="header-nav">
+                <a href="#" class="active">Home</a>
+                <a href="#diensten">Diensten</a>
+                <a href="#over-ons">Over ons</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Sectie -->
     <section class="hero py-5">
@@ -239,6 +222,17 @@
     <!-- Bootstrap JS + Formulier script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Actieve menu item highlighten
+        document.querySelectorAll('.header-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelectorAll('.header-nav a').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Formulier afhandeling
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const form = e.target;
@@ -246,7 +240,6 @@
             const submitText = submitButton.querySelector('.submit-text');
             const spinner = submitButton.querySelector('.spinner-border');
             
-            // Laadstatus tonen
             submitText.textContent = 'Verzenden...';
             spinner.classList.remove('d-none');
             submitButton.disabled = true;
