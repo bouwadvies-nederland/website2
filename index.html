@@ -14,7 +14,29 @@
             --secondary: #333;
             --accent: #e74c3c;
         }
-        
+
+        /* Witte header */
+        .header-bar {
+            background: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header-logo {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+        .header-logo:hover {
+            transform: scale(1.03);
+        }
+
+        /* Navigatie */
+        .navbar-dark {
+            background-color: #343a40 !important;
+        }
+
+        /* Hero sectie */
         .hero {
             background: linear-gradient(rgba(0,86,179,0.9), rgba(0,86,179,0.8)), 
                         url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3');
@@ -25,63 +47,60 @@
             display: flex;
             align-items: center;
         }
-        
-        .navbar-brand img {
-            height: 40px;
-            width: auto;
-            transition: transform 0.3s;
-        }
-        
-        .navbar-brand img:hover {
-            transform: scale(1.05);
-        }
-        
+
+        /* Diensten cards */
         .benefit-card {
             border-left: 4px solid var(--accent);
             transition: all 0.3s;
-            height: 100%;
         }
-        
         .benefit-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        
+
+        /* Knoppen */
         .btn-primary {
             background-color: var(--accent);
             border: none;
             padding: 10px 25px;
         }
-        
         .btn-primary:hover {
             background-color: #c0392b;
         }
-        
+
+        /* Contactformulier */
         #contact .form-control {
-            border-radius: 0;
-            border: 1px solid #ddd;
-            padding: 12px 15px;
+            margin-bottom: 20px;
         }
-        
-        #contact .form-control:focus {
-            box-shadow: 0 0 0 0.25rem rgba(0, 86, 179, 0.25);
-            border-color: var(--primary);
-        }
-        
-        @media (max-width: 768px) {
+
+        /* Responsive aanpassingen */
+        @media (max-width: 992px) {
+            .header-bar {
+                display: none;
+            }
             .navbar-brand img {
-                height: 30px;
+                height: 50px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Witte header (desktop) -->
+    <div class="header-bar d-none d-lg-block">
+        <div class="container">
+            <img src="assets/images/logo-bouwadvies-nederland.jpeg" 
+                 alt="Bouwadvies Nederland" 
+                 class="header-logo">
+        </div>
+    </div>
+
     <!-- Navigatie -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="assets/images/logo-bouwadvies-nederland.jpeg" 
-                     alt="Bouwadvies Nederland Logo">
+                     alt="Bouwadvies Nederland"
+                     height="40">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -169,25 +188,33 @@
     </section>
 
     <!-- Contactformulier -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-6">
-                    <h2 class="text-center mb-4">Contacteer ons</h2>
-                    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+                    <h2 class="text-center mb-4">Neem contact op</h2>
+                    <form action="https://formspree.io/f/xqaqoden" method="POST" id="contact-form">
+                        <input type="hidden" name="_language" value="nl">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Naam</label>
+                            <label for="name" class="form-label">Naam*</label>
                             <input type="text" class="form-control" id="name" name="name" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">E-mail</label>
+                            <label for="email" class="form-label">E-mail*</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="message" class="form-label">Bericht</label>
+                            <label for="phone" class="form-label">Telefoonnummer</label>
+                            <input type="tel" class="form-control" id="phone" name="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Bericht*</label>
                             <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Verstuur</button>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <span class="submit-text">Verstuur</span>
+                            <span class="spinner-border spinner-border-sm d-none"></span>
+                        </button>
                     </form>
                 </div>
             </div>
@@ -209,7 +236,44 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS + Formulier script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const submitButton = form.querySelector('button[type="submit"]');
+            const submitText = submitButton.querySelector('.submit-text');
+            const spinner = submitButton.querySelector('.spinner-border');
+            
+            // Laadstatus tonen
+            submitText.textContent = 'Verzenden...';
+            spinner.classList.remove('d-none');
+            submitButton.disabled = true;
+            
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Bedankt! We nemen binnen 24 uur contact op.');
+                    form.reset();
+                } else {
+                    throw new Error('Verzending mislukt');
+                }
+            })
+            .catch(error => {
+                alert('Fout: Probeer het later opnieuw of bel ons direct.');
+                console.error('Formulierfout:', error);
+            })
+            .finally(() => {
+                submitText.textContent = 'Verstuur';
+                spinner.classList.add('d-none');
+                submitButton.disabled = false;
+            });
+        });
+    </script>
 </body>
 </html>
